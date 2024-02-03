@@ -1,0 +1,60 @@
+/* Design System
+---- 01 TYPOGRAPHY sUYSTEM
+
+- SPACING SYTEM (px) 
+2 /4 / 8/ 12 / 16 /24 /32 /48 / 64/ 80/ 96 /128
+- FONT SIZE SYSTEM (px)
+10 /12 /14 /16 /18 /24 /30/ 36 /44 / 52 /62 /74 / 86 /98
+
+- FONT-WEIGHTS
+Default: 400
+Footer Font Weight: 800
+
+- LINE HEIGHTS
+DEFAULT:1.4 [Body]
+PARAGRAPHS: 1.5
+ 1.25;
+
+
+--- 02 COLOURS
+MAIN COLOURS : #087f5b
+MAIN COLOR_1 #2c5f2d HAS A BETTER CONTRAST RATIO
+GREY COLOR : #212529
+
+- Primary:
+- Tints:
+- Shades:
+- Accents
+- Greys:
+# 555
+
+
+---05 Shadows-------
+
+---06 BORDER RADIUS-------
+  Contact Us Form 10px;
+
+---07 WHITESPACING SYSTEM--------
+2 /4 / 8/ 12 / 16 /24 /32 /48 / 64/ 80/ 96 /128
+
+---- 08 Images ------------
+unspalsh.com, UIfaces.co
+*/
+
+html, body {
+  height: 100%;
+}
+
+/* .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+} */
+
+h2 {
+  margin-bottom: 20px;
+  color: red;
+  font-size: 24px;
+}
