@@ -8,18 +8,18 @@ from flask import render_template
 from flask import request, redirect, url_for, flash
 from app.forms import LoginForm
 
-# @app.route('/login', methods=['GET', 'POST'])
-# # View function mapped to /login URL that creates an instance of the LoginForm
-# def login():
-#    #instantiate the form class
-#    form = LoginForm()
-#    print(form.username.data)
-#    print(form.password.data)
-#    if form.validate_on_submit():
-#       flash('Login requested for user {}, remember_me={}'.format(
-#          form.username.data, form.remember_me.data))
-#       return redirect(url_for('index'))
-#    return render_template('login.html', title='Sign In', form=form)
+@app.route('/login', methods=['GET', 'POST'])
+# View function mapped to /login URL that creates an instance of the LoginForm
+def login():
+   #instantiate the form class
+   form = LoginForm()
+   print(form.username.data)
+   print(form.password.data)
+   if form.validate_on_submit():
+      flash('Login requested for user {}, remember_me={}'.format(
+         form.username.data, form.remember_me.data))
+      return redirect(url_for('index'))
+   return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/')
 @app.route('/index')
