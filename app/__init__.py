@@ -4,10 +4,11 @@ from flask_login import LoginManager
 # Creates an application object as an instance of the class Flask
 # imported from flask package
 app = Flask(__name__)
+from app import routes
 # Tells the flas app to read and apply the configuration from the object
 app.config.from_object(Config)
-login=LoginManager(app)
-from app import routes
+#login=LoginManager(app)
+
 
 #Allows you run the file from the command line
 if __name__ == "__main__":
