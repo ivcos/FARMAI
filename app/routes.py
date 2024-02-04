@@ -16,6 +16,7 @@ def login():
    print(form.username.data)
    print(form.password.data)
    if form.validate_on_submit():
+      #flash() function is a way to provide feedback to a user
       flash('Login requested for user {}, remember_me={}'.format(
          form.username.data, form.remember_me.data))
       return redirect(url_for('.index'))

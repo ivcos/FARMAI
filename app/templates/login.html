@@ -9,7 +9,8 @@
   <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
     integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
     crossorigin="anonymous"></script>
-  <link type="text/css" rel="stylesheet" href="../static/css/style.css">
+
+  <!-- <link type="text/css" rel="stylesheet" href="../static/css/style.css"> -->
   <title>FarmAI Home Page</title>
   <!-- <h1>FarmAI Home Page</h1> -->
 </head>
@@ -65,6 +66,7 @@
         <div class="col-md-6">
           <!-- Form -->
           <form action="" method="post" novalidate>
+            <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
             {{form.hidden_tag()}}
             <h2> Login To </h2>
             <img src="../static/img/FarmAILogo1.png" alt="" width="120" height="96"
@@ -73,14 +75,20 @@
             <!-- Input Loging Form fields -->
             <div class="form-group mb-3">
               {{form.username.label}}
-              {{form.username()}}
+              {{form.username(size=32, class="form-control", id="username")}}
+              {% for error in form.username.errors %}
+              <span style="color: red;">[{{error}}]</span>
+              {% endfor %}
               <!-- {{form.username.errors}} -->
               <!-- <label for="text">Username</label> -->
               <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Username..." required> -->
             </div>
             <div class="form-group mb-3">
               {{form.password.label}}
-              {{form.password()}}
+              {{form.password(class="form-control", id="password" )}}
+              {% for error in form.password.errors %}
+              <span style="color: red;">[{{error}}]</span>
+              {% endfor %}
               <!-- <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Username..."
                 required> -->
@@ -98,6 +106,7 @@
             <p class="copyright mb-2">&copy; FarmAI - Putting Artificial Imtelligence in Farming <a
                 href="https://FARMAI.com">FARMAI</a>.</p>
           </form>
+
           <!-- Form end -->
         </div>
       </div>
@@ -106,7 +115,8 @@
     </form>
   </div>
   </div>
-</body>
 
+</body>
+<script src="../static/js/login.js"></script>
 
 </html>

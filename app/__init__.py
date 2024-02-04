@@ -1,3 +1,4 @@
+# This file makes the FARNAI.py file a python package
 from flask import Flask, render_template, request, redirect, url_for, flash
 from config import Config
 from flask_login import LoginManager
