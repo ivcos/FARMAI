@@ -8,3 +8,7 @@ app = Flask(__name__)
 app.config.from_object(Config)
 login=LoginManager(app)
 from app import routes
+
+#Allows you run the file from the command line
+if __name__ == "__main__":
+  app.run()
