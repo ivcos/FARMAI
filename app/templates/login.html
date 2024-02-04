@@ -64,20 +64,26 @@
       <div class="row h-100 align-items-center justify-content-center">
         <div class="col-md-6">
           <!-- Form -->
-          <form action="/login" method="post">
+          <form action="" method="post" novalidate>
+            {{form.hidden_tag()}}
             <h2> Login To </h2>
             <img src="../static/img/FarmAILogo1.png" alt="" width="120" height="96"
               class="d-inline-block align-text-top">
             <p class="description">Login to FarmAI to get access to FarmAI Tools.</p>
             <!-- Input Loging Form fields -->
             <div class="form-group mb-3">
-              <label for="text">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Username..." required>
+              {{form.username.label}}
+              {{form.username()}}
+              <!-- {{form.username.errors}} -->
+              <!-- <label for="text">Username</label> -->
+              <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Username..." required> -->
             </div>
             <div class="form-group mb-3">
-              <label for="password">Password</label>
+              {{form.password.label}}
+              {{form.password()}}
+              <!-- <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Username..."
-                required>
+                required> -->
             </div>
             <div class="form-group mb-3">
               <button type="submit" class="btn btn-primary">Login</button>
