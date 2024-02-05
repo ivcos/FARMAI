@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html class="h-100">
+<html lang="en class=" h-100">
 
 <head>
   <meta charset="UTF-8">
@@ -13,51 +13,53 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 
-<body>
-  <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-success">
-    <div class="container">
-      <!-- <div class="container-fluid"> -->
-      <div class="navbar-brand">
-        <!-- <img src="../static/img/FarmAILogo1.png" alt="" width="60" height="48"> -->
-        <!-- class="d-inline-block align-text-top"> -->
-        <!-- <h1>FARMAI</h1> -->
-      </div>
-    </div>
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link active" id="login" href="/Login">Login</a>
-        </li>
-        <!-- <a class="nav-link" href="index.html">Home</a> -->
-
-        <li class="nav-item">
-          <a class="nav-link" id="logout" href="/login">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="register" href="register.html">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" id="" home" href="/">Home</a>
-        </li>
-      </ul>
-      <form class="form-inline ml-auto">
-        <input type="text" class="form-control mr-2" placeholder=" Search">
-        <button class="btn btn-outline-success">Search</button>
-      </form>
-    </div>
-  </nav>
-  <!-- placeholder for content -->
-  {% block body %}
+<body class="h-100">
   <div class="container">
-    text
-    {% endblock %}
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <header>
+      <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-success">
+        <div class="container">
+          <!-- <div class="container-fluid"> -->
+          <div class="navbar-brand">
+            <!-- <img src="../static/img/FarmAILogo1.png" alt="" width="60" height="48"> -->
+            <!-- class="d-inline-block align-text-top"> -->
+            <!-- <h1>FARMAI</h1> -->
+          </div>
+        </div>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" id="login" href="/login">Login</a>
+            </li>
+            <!-- <a class="nav-link" href="index.html">Home</a> -->
+
+            <li class="nav-item">
+              <a class="nav-link" id="logout" href="/login">Logout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="register" href="/register">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="" home" href="/">Home</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <!-- placeholder for content -->
+    {% block body %}
+    <div class="container">
+      text
+      {% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
 
 </body>
 

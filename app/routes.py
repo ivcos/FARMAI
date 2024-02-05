@@ -7,6 +7,7 @@ from app import app
 from flask import render_template
 from flask import request, redirect, url_for, flash
 from app.forms import LoginForm
+from app.forms import RegistrationForm
 
 @app.route('/login', methods=['GET', 'POST'])
 # View function mapped to /login URL that creates an instance of the LoginForm
@@ -34,7 +35,8 @@ def logout():
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
-    return render_template('register.html', title='Register')
+      form = RegistrationForm()
+      return render_template('register.html', title='Register', form=form)
 
 
 # @app.route('/', methods=['GET', 'POST'])

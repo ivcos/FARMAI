@@ -1,122 +1,63 @@
-<!DOCTYPE html class="h-100">
-<html lang="en" class="h-100">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
-    integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
-    crossorigin="anonymous"></script>
-
-  <!-- <link type="text/css" rel="stylesheet" href="../static/css/style.css"> -->
-  <title>FarmAI Home Page</title>
-  <!-- <h1>FarmAI Home Page</h1> -->
-</head>
-
-<body class="h-100">
-  <div class="container">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-    <header>
-      <!-- NAVBAR WITH RESPONSIVE TOGGLE-->
-      <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-success">
-        <div class="container">
-          <!-- <div class="container-fluid"> -->
-          <div class="navbar-brand">
-            <img src="../static/img/FarmAILogo1.png" alt="" width="60" height="48">
-            <!-- class="d-inline-block align-text-top"> -->
-            <!-- <h1>FARMAI</h1> -->
-          </div>
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block body %}
+<h1 class="text-center mt-1 ">FARMERS IN CONTROL OF THEIR DATA - LOGIN </h1>
+<!-- Bootstrap to centre Form -->
+<div class="container h-100">
+  <div class="row h-100 align-items-center justify-content-center">
+    <div class="col-md-6">
+      <!-- Form -->
+      <form action="" method="post" novalidate>
+        <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
+        {{form.hidden_tag()}}
+        <h2> Login To </h2>
+        <img src="../static/img/FarmAILogo1.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
+        <p class="description">Login to FarmAI to get access to FarmAI Tools.</p>
+        <!-- Input Loging Form fields -->
+        <div class="form-group mb-3">
+          {{form.username.label}}
+          {{form.username(size=32, class="form-control", id="username")}}
+          {% for error in form.username.errors %}
+          <span style="color: red;">[{{error}}]</span>
+          {% endfor %}
+          <!-- {{form.username.errors}} -->
+          <!-- <label for="text">Username</label> -->
+          <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Username..." required> -->
         </div>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
-            </li>
-            <!-- <a class="nav-link" href="index.html">Home</a> -->
-
-            <li class="nav-item">
-              <a class="nav-link" href="AgriIot.html">AgriIoT</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="AboutUs.html">AboutUs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ContactUs.html">Contact Us</a>
-            </li>
-          </ul>
-          <form class="form-inline ml-auto">
-            <input type="text" class="form-control mr-2" placeholder=" Search">
-            <button class="btn btn-outline-success">Search</button>
-          </form>
-        </div>
-      </nav>
-      <h1 class="text-center mt-1 ">FARMERS IN CONTROL OF THEIR DATA</h1>
-    </header>
-    <h1 class="text-center mt-1 ">FARMERS IN CONTROL OF THEIR DATA - LOGIN </h1>
-    <!-- Bootstrap to centre Form -->
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center">
-        <div class="col-md-6">
-          <!-- Form -->
-          <form action="" method="post" novalidate>
-            <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
-            {{form.hidden_tag()}}
-            <h2> Login To </h2>
-            <img src="../static/img/FarmAILogo1.png" alt="" width="120" height="96"
-              class="d-inline-block align-text-top">
-            <p class="description">Login to FarmAI to get access to FarmAI Tools.</p>
-            <!-- Input Loging Form fields -->
-            <div class="form-group mb-3">
-              {{form.username.label}}
-              {{form.username(size=32, class="form-control", id="username")}}
-              {% for error in form.username.errors %}
-              <span style="color: red;">[{{error}}]</span>
-              {% endfor %}
-              <!-- {{form.username.errors}} -->
-              <!-- <label for="text">Username</label> -->
-              <!-- <input type="text" class="form-control" id="username" name="username" placeholder="Username..." required> -->
-            </div>
-            <div class="form-group mb-3">
-              {{form.password.label}}
-              {{form.password(class="form-control", id="password" )}}
-              {% for error in form.password.errors %}
-              <span style="color: red;">[{{error}}]</span>
-              {% endfor %}
-              <!-- <label for="password">Password</label>
+        <div class="form-group mb-3">
+          {{form.password.label}}
+          {{form.password(class="form-control", id="password" )}}
+          {% for error in form.password.errors %}
+          <span style="color: red;">[{{error}}]</span>
+          {% endfor %}
+          <!-- <label for="password">Password</label>
               <input type="password" class="form-control" id="password" name="password" placeholder="Username..."
                 required> -->
-            </div>
-            <div class="form-group mb-3">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-            <div class="form-check mb-6">
-              <input class="form-check-input" type="checkbox" id="inlineFormCheck" />
-              <label class="form-check-label" for="inlineFormCheck">
-                Remember me
-              </label>
-            </div>
-            <!-- End Login Form input fields -->
-            <p class="copyright mb-2">&copy; FarmAI - Putting Artificial Imtelligence in Farming <a
-                href="https://FARMAI.com">FARMAI</a>.</p>
-          </form>
-
-          <!-- Form end -->
         </div>
-      </div>
+        <div class="form-group mb-3">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <div class="form-check mb-6">
+          <input class="form-check-input" type="checkbox" id="inlineFormCheck" />
+          <label class="form-check-label" for="inlineFormCheck">
+            Remember me
+          </label>
+        </div>
+        <!-- End Login Form input fields -->
+        <p class="copyright mb-2">&copy; FarmAI - Putting Artificial Imtelligence in Farming <a
+            href="https://FARMAI.com">FARMAI</a>.</p>
+      </form>
+
+      <!-- Form end -->
     </div>
-
-    </form>
   </div>
-  </div>
+</div>
 
-</body>
+</form>
+</div>
+</div>
+
+{% endblock %}
 <script src="../static/js/login.js"></script>
 
 </html>
