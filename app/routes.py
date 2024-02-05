@@ -8,6 +8,10 @@ from flask import render_template
 from flask import request, redirect, url_for, flash
 from app.forms import LoginForm
 from app.forms import RegistrationForm
+from app.models import User
+from app.models import Usersdb
+import shelve
+
 
 @app.route('/login', methods=['GET', 'POST'])
 # View function mapped to /login URL that creates an instance of the LoginForm
@@ -16,6 +20,25 @@ def login():
    form = LoginForm()
    print(form.username.data)
    print(form.password.data)
+   # Check if user is registered and fields are valid
+   shelve_file = shelve.open("users.db")
+   print(type(shelve_file)
+   if request.method == 'POST':
+      if form.username.data in shelve_file.keys():
+         print("User is registered")
+         flash('User {} is registered'.format(form.username.data))
+      else:
+         print("User is not registered")
+         flash('User {} is not registered'.format(form.username.data)) 
+         return redirect(url_for('.register')) 
+      if form.password.data == shelve_file[form.username.data][1]:
+         print("Password is correct")
+         flash('Password is correct')
+         return redirect(url_for('.index'))
+      else:
+         print("Password is incorrect")
+         flash('Password is incorrect')
+         return redirect(url_for('.login'))
    if form.validate_on_submit():
       #flash() function is a way to provide feedback to a user
       flash('Login requested for user {}, remember_me={}'.format(
@@ -36,6 +59,25 @@ def logout():
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
       form = RegistrationForm()
+      # print(form.username.data)
+      # print(form.email.data)
+      # print(form.password.data)
+      # print(form.password2.data)
+      if form.validate_on_submit():
+         userRegistration = User(form.username.data, form.email.data, form.password.data)
+         print(userRegistration.username)
+         print(userRegistration.email)
+         print(userRegistration.password)
+         userdb= Usersdb()
+         userdb.add_user(userRegistration)
+         userdb.__del__()
+         flash('Registration requested for user {}, email={}'.format(
+            form.username.data, form.email.data))
+         # open a shelf file 
+         shelve_file = shelve.open("users.db") 
+         print("Items in the sample shelve file: ", list(shelve_file.items())) 
+         print() 
+         return redirect(url_for('.login'))
       return render_template('register.html', title='Register', form=form)
 
 

@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from config import Config
 from flask_login import LoginManager
+# from app.models import Usersdb
 # Creates an application object as an instance of the class Flask
 # imported from flask package
 app = Flask(__name__)
@@ -10,6 +11,8 @@ from app import routes
 # Tells the flas app to read and apply the configuration from the object
 app.config.from_object(Config)
 #login=LoginManager(app)
+
+
 
 
 #Allows you run the file from the command line
