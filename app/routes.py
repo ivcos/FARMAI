@@ -27,6 +27,16 @@ def login():
 def index():
     return render_template('index.html', title='Home')
 
+
+@app.route('/logout')
+def logout():
+    return "<p>Logout</p>"
+
+@app.route('/register',  methods=['GET', 'POST'])
+def register():
+    return render_template('register.html', title='Register')
+
+
 # @app.route('/', methods=['GET', 'POST'])
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
