@@ -22,7 +22,7 @@ def login():
    print(form.password.data)
    # Check if user is registered and fields are valid
    shelve_file = shelve.open("users.db")
-   print(type(shelve_file)
+   print(type(shelve_file))
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
          print("User is registered")
