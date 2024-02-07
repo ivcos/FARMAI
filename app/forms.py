@@ -17,14 +17,24 @@ class RegistrationForm(FlaskForm):
       'Confirm Password', validators=[DataRequired(), EqualTo('password')])
   submit = SubmitField('Register')
 
-    # def validate_username(self, username):
-    #   user = User.query.filter_by(username=username.data).first()
-    #   if user is not None:
-    #     raise ValidationError('Please use a different username.')
+class SlurryStorageForm(FlaskForm):
+  farmnumber = StringField('Farm Number', validators=[DataRequired(), Length(min=4, max=10)])
+  tanklength = StringField('Tank Length', validators=[DataRequired()])
+  tankwidth = StringField('Tank Width', validators=[DataRequired()])
+  tankheight = StringField('Tank Height', validators=[DataRequired()])
+  tankvolume = StringField('Tank Volume')
+  tankcapacity = StringField('Tank Fill Capacity')
+  date = StringField('Date', validators=[DataRequired()])
+        
+  submit = SubmitField('Submit')
+  submit2 = SubmitField('Reset')
 
-    # def validate_email(self, email):
-    #   user = User.query.filter_by(email=email.data).first()
-    #   if user is not None:
-    #     raise ValidationError('Please use a different email address.')
+class SlurryCalculationForm(FlaskForm):
+  farmnumber = StringField('Farm Number', validators=[DataRequired(), Length(min=4, max=10)])
+  regulatoryfillLevelallowed = StringField('Regulatory Fill Level Allowed')
+  dateeightypercentfilled = StringField('Date Eighty Percent Filled')
+  dateninetypercentfilled = StringField('Date Eighty Percent Filled')
+  datefull = StringField('Date Full')
+  submit2 = SubmitField('Reset')
 
 

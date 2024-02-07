@@ -10,6 +10,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.models import User
 from app.models import Usersdb
+from app.forms import SlurryStorageForm, SlurryCalculationForm
 import shelve
 
 
@@ -81,6 +82,11 @@ def register():
       return render_template('register.html', title='Register', form=form)
 
 
+@app.route('/slurryStorage', methods=['GET', 'POST'])
+def slurrystorage():
+      form = SlurryStorageForm()
+      form2 = SlurryCalculationForm()
+      return render_template('slurryStorage.html', title='Slurry Storage', form=form, form2=form2)
 # @app.route('/', methods=['GET', 'POST'])
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
