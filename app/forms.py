@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import DecimalField, RadioField, SelectField, TextAreaField 
 from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo
 from wtforms.validators import DataRequired
 
@@ -37,4 +38,12 @@ class SlurryCalculationForm(FlaskForm):
   datefull = StringField('Date Full')
   submit2 = SubmitField('Reset')
 
-
+class ContactUSForm(FlaskForm):
+  firstname = StringField('First Name', validators=[DataRequired()])
+  lastname = StringField('Last Name', validators=[DataRequired()])
+  email = StringField('Email', validators=[DataRequired(), Length(min=4, max=25)])
+  mobilenumber = StringField('Mobile')
+  farmtype = SelectField('Farm Type', validators=[DataRequired()], choices=[('Pig', 'Pig'), ('Poultry', 'Poultry'), ('Dairy', 'Dairy'), ('Beef', 'Beef'), ('Sheep', 'Sheep'), ('Other', 'Other')])  
+  submit = SubmitField('Submit')
+  
+                         

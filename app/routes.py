@@ -10,6 +10,7 @@ from app.forms import LoginForm
 from app.forms import RegistrationForm
 from app.models import User
 from app.models import Usersdb
+from app.forms import ContactUSForm
 from app.forms import SlurryStorageForm, SlurryCalculationForm
 import shelve
 
@@ -99,7 +100,9 @@ def register():
             #shelve_file = shelve.open("users.db") 
             print("Items in the sample shelve file: ", list(shelvefiledict.items())) 
             print() 
-            return redirect(url_for('.login'))
+            msg="Thank you. User " + form.username.data + " has been registered"
+            print(msg)
+            return redirect(url_for('.login', msg=msg))
       return render_template('register.html', title='Register', form=form)
 
 
@@ -108,6 +111,12 @@ def slurrystorage():
       form = SlurryStorageForm()
       form2 = SlurryCalculationForm()
       return render_template('slurryStorage.html', title='Slurry Storage', form=form, form2=form2)
+
+@app.route('/ContactUs', methods=['GET', 'POST'])
+def contactus():
+   contactform = ContactUSForm()
+   return render_template('ContactUs.html', title='ContactUs', form = contactform)
+
 # @app.route('/', methods=['GET', 'POST'])
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
