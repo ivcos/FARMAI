@@ -61,7 +61,9 @@ def logout():
 def register():
       shelvefile = shelve.open("users.db") 
       shelvefiledict = dict(shelvefile)
-      print("Items in the sample shelve file: ", list(shelvefiledict.items()))
+      print("Items in the sample shelve file: ", (shelvefiledict.items()))
+      emailsregistered = [email[0] for email in shelvefiledict.values()]
+      print("Emails Registered", emailsregistered)
       shelvefile.close()
       form = RegistrationForm()
       # print(form.username.data)
@@ -75,7 +77,14 @@ def register():
             error = "User " + form.username.data + " already registered. Please Use different Username"
             flash('User {} is already registered'.format(form.username.data))
             return render_template('register.html', title='Register', form = form, error=error)
+         elif form.email.data in emailsregistered:
+            print(shelvefiledict.values())
+            print("Email already registered")
+            error = "Email " + form.email.data + " already registered. Please Use different Email"
+            flash('Email {} is already registered'.format(form.email.data))
+            return render_template('register.html', title='Register', form = form, error=error)
          else:
+            print(form.email.data)
             print("User not registered")
             flash('User {} is not registered'.format(form.username.data))
             print(userRegistration.username)

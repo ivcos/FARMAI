@@ -45,7 +45,7 @@
           {{form.password2.label}}
           {{form.password2(class="form-control", id="password2" )}}
           {% for error in form.password2.errors %}
-          <span style="color: red;">PASSWORDS DON'T MATCH. This {{error}} Try Again</span>
+          <span style="color: red;">PASSWORDS DON'T MATCH. This {{error|upper}} TRY AGAIN</span>
           {% endfor %}
         </div>
         <div class="form-group mb-3">
