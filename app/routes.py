@@ -59,6 +59,10 @@ def logout():
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
+      shelvefile = shelve.open("users.db") 
+      shelvefiledict = dict(shelvefile)
+      print("Items in the sample shelve file: ", list(shelvefiledict.items()))
+      shelvefile.close()
       form = RegistrationForm()
       # print(form.username.data)
       # print(form.email.data)
@@ -66,19 +70,27 @@ def register():
       # print(form.password2.data)
       if form.validate_on_submit():
          userRegistration = User(form.username.data, form.email.data, form.password.data)
-         print(userRegistration.username)
-         print(userRegistration.email)
-         print(userRegistration.password)
-         userdb= Usersdb()
-         userdb.add_user(userRegistration)
-         userdb.__del__()
-         flash('Registration requested for user {}, email={}'.format(
-            form.username.data, form.email.data))
-         # open a shelf file 
-         shelve_file = shelve.open("users.db") 
-         print("Items in the sample shelve file: ", list(shelve_file.items())) 
-         print() 
-         return redirect(url_for('.login'))
+         if form.username.data in shelvefiledict.keys():
+            print("User already registered")
+            error = "User " + form.username.data + " already registered. Please Use different Username"
+            flash('User {} is already registered'.format(form.username.data))
+            return render_template('register.html', title='Register', form = form, error=error)
+         else:
+            print("User not registered")
+            flash('User {} is not registered'.format(form.username.data))
+            print(userRegistration.username)
+            print(userRegistration.email)
+            print(userRegistration.password)
+            userdb= Usersdb()
+            userdb.add_user(userRegistration)
+            userdb.__del__()
+            flash('Registration requested for user {}, email={}'.format(
+               form.username.data, form.email.data))
+            # open a shelf file 
+            #shelve_file = shelve.open("users.db") 
+            print("Items in the sample shelve file: ", list(shelvefiledict.items())) 
+            print() 
+            return redirect(url_for('.login'))
       return render_template('register.html', title='Register', form=form)
 
 
