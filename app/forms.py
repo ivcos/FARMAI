@@ -18,7 +18,7 @@ class RegistrationForm(FlaskForm):
       'Confirm Password', validators=[DataRequired(), EqualTo('password')])
   submit = SubmitField('Register')
 
-class SlurryStorageForm(FlaskForm):
+class farmtankStorageForm(FlaskForm):
   farmnumber = StringField('Farm Number', validators=[DataRequired(), Length(min=4, max=10)])
   tanklength = StringField('Tank Length', validators=[DataRequired()])
   tankwidth = StringField('Tank Width', validators=[DataRequired()])
@@ -29,7 +29,7 @@ class SlurryStorageForm(FlaskForm):
   submit = SubmitField('Submit')
   submit2 = SubmitField('Reset')
 
-class SlurryCalculationForm(FlaskForm):
+class farmtankCalculationForm(FlaskForm):
   farmnumber = StringField('Farm Number', validators=[DataRequired(), Length(min=4, max=10)])
   regulatoryfillLevelallowed = StringField('Regulatory Fill Level Allowed')
   dateeightypercentfilled = StringField('Date Eighty Percent Filled')

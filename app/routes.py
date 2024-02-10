@@ -11,7 +11,7 @@ from app.forms import RegistrationForm
 from app.models import User
 from app.models import Usersdb
 from app.forms import ContactUSForm
-from app.forms import SlurryStorageForm, SlurryCalculationForm
+from app.forms import farmtankStorageForm, farmtankCalculationForm
 import shelve
 
 
@@ -106,11 +106,11 @@ def register():
       return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/slurryStorage', methods=['GET', 'POST'])
-def slurrystorage():
-      form = SlurryStorageForm()
-      form2 = SlurryCalculationForm()
-      return render_template('slurryStorage.html', title='Slurry Storage', form=form, form2=form2)
+@app.route('/farmtankstorage', methods=['GET', 'POST'])
+def farmtankstorage():
+      form = farmtankStorageForm()
+      form2 = farmtankCalculationForm()
+      return render_template('farmtankstorage.html', title='Slurry Storage', form=form, form2=form2)
 
 @app.route('/ContactUs', methods=['GET', 'POST'])
 def contactus():
