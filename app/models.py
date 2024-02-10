@@ -38,3 +38,19 @@ class User:
   
   def get_password(self): 
     return self.password
+  
+
+class SlurryStorageTank:
+
+  def __init__(self, farmnumber, tanklength, tankwidth, tankheight):
+    self.farmnumber = farmnumber
+    self.tanklength = tanklength
+    self.tankwidth = tankwidth
+    self.tankheight = tankheight
+    self.tankcapacity = self.tanklength * self.tankwidth * self.tankheight
+    # self.regulatoryfillLevelallowed = self.tankcapacity * 0.8
+    # self.eightypercentfilled = self.tankcapacity * 0.2
+    # self.ninetypercentfilled = self.tankcapacity * 0.1
+    # self.datefull = self.tankcapacity *0.8
+    
+    

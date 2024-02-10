@@ -12,7 +12,8 @@
         <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
         {{form.hidden_tag()}}
         <h2> Register </h2>
-        <img src="../static/img/FarmAILogo1.png" alt="" width="120" height="96" class="d-inline-block align-text-top">
+        <img src="{{url_for('static', filename='img/FarmAILogo1.png')}}" alt="" width="120" height="96"
+          class="d-inline-block align-text-top">
         <p class="description">Register to FarmAI to get access to FarmAI Tools.</p>
         <!-- <span style="color:red;">{{ username }}{{ error }}</span> -->
         {% if error %}

@@ -23,7 +23,6 @@ class SlurryStorageForm(FlaskForm):
   tanklength = StringField('Tank Length', validators=[DataRequired()])
   tankwidth = StringField('Tank Width', validators=[DataRequired()])
   tankheight = StringField('Tank Height', validators=[DataRequired()])
-  tankvolume = StringField('Tank Volume')
   tankcapacity = StringField('Tank Fill Capacity')
   date = StringField('Date', validators=[DataRequired()])
         
