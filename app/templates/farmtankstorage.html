@@ -44,18 +44,77 @@
           </div>
 
           <div class="form-group mb-3">
-            {{form.tankcapacity.label}}
+            {{form.tankcapacity.label}} Litres
             {{form.tankcapacity(size=32, class="form-control", id="tankcapacity")}}
             {% for error in form.tankcapacity.error %}
             <span style="color: red;">[{{error}}]</span>
             {% endfor %}
           </div>
           <div class="form-group mb-3">
+            {{form.regulatoryfillcapacityallowed.label}} Litres
+            {{form.regulatoryfillcapacityallowed(size=32, class="form-control", id="regulatoryfillcapacityallowed")}}
+            {% for error in form.regulatoryfillcapacityallowed.error %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+          </div>
+
+          <div class=" form-group mb-3">
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              What is this
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Regulatory Fill Level Allowed</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>The Regulatory Fill capacity is actually lower than tank capacity20cm of freeboard
+                      - a gap between the top of the slurry and the bottom of slats
+                      is required to allow agitation and to prevent animal welfare issues in sovered tanks.
+                    </p>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-3">
+            {{form.dateanimalshoused.label}}
+            {{form.regulatoryfillcapacityallowed(size=32, type="date", class="form-control", min="2023-10-01",
+            max="2023-11-30",
+            id="regulatoryfillcapacityallowed")}}
+            {% for error in form.regulatoryfillcapacityallowed.error %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+          </div>
+          <div class=" form-group mb-3">
             <button type="submit" class="btn btn-success btn-lg btn-block enabled">Calculate <i
                 class="fa fa-calculator"></i></button>
             <!-- <button type="submit" class="btn btn-success btn-lg btn-block disabled">Calculate <i
-                class="fa fa-calculator"></i></button> -->
+              class="fa fa-calculator"></i></button> -->
           </div>
+          <div class="form-group mb-3">
+            {{form.tankheightdateanimalshoused.label}}
+            {{form.tankheightdateanimalshoused(size=32, class="form-control",
+            id="tankheightdateanimalshoused")}}
+            {% for error in form.regulatoryfillcapacityallowed.error %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+          </div>
+          <!--- MODAL to Explain what this field means-->
+          <!-- Button trigger modal -->
+
         </form>
       </div>
     </div>

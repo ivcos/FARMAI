@@ -36,7 +36,7 @@ def login():
       if form.password.data == shelve_file[form.username.data][1]:
          print("Password is correct")
          flash('Password is correct')
-         return redirect(url_for('.index'))
+         return redirect(url_for('.farmtankstorage'))
       else:
          print("Password is incorrect")
          flash('Password is incorrect')
@@ -109,8 +109,8 @@ def register():
 @app.route('/farmtankstorage', methods=['GET', 'POST'])
 def farmtankstorage():
       form = farmtankStorageForm()
-      form2 = farmtankCalculationForm()
-      return render_template('farmtankstorage.html', title='Slurry Storage', form=form, form2=form2)
+      # form2 = farmtankCalculationForm()
+      return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
 
 @app.route('/ContactUs', methods=['GET', 'POST'])
 def contactus():
