@@ -13,6 +13,8 @@ from app.models import Usersdb
 from app.forms import ContactUSForm
 from app.forms import farmtankStorageForm, farmtankCalculationForm
 import shelve
+import csv
+import datetime
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -109,13 +111,67 @@ def register():
 @app.route('/farmtankstorage', methods=['GET', 'POST'])
 def farmtankstorage():
       form = farmtankStorageForm()
-      # form2 = farmtankCalculationForm()
-      return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
-
+      print("-----------------")
+      print(form.farmnumber.data)
+      print(form.tanklength.data)
+      print("-----------------")
+      if request.method == 'POST':
+         print("Form Submitted")
+         if form.validate_on_submit():
+            print(form.farmnumber.data)
+            print(form.tanklength.data)
+            print("ok")
+            #form=farmtankStorageForm(form.farmnumber.data, form.tanklength.data, form.tankwidth.data, form.tankheight.data, form.tankcapacity.data, form.regulatoryfillcapacityallowed.data, form.dateanimalshoused.data, form.tankheightdateanimalshoused.data, form.tankcapacityhousing.data) 
+            # import the sensors data to check the height of the tank the date entered
+            # on the form that the animals were housed.
+            sensordatalist = loadcsvfile()
+            print(sensordatalist)
+            for sensorreading in sensordatalist:
+               # print(sensorreading[0])
+               # print(form.dateanimalshoused.data)
+               if sensorreading[0] == form.dateanimalshoused.data:
+                  print("Date Animals Housed_0: ", form.dateanimalshoused.data)
+                  print("Date Animals Housed: ", sensorreading[0])
+                  print("test", form.dateanimalshoused.data)
+                  print("Tank Height Date Animals Housed: ", sensorreading[2])
+                  print("Day Number: ", sensorreading[1])
+                  print(float(form.tanklength.data), float(form.tankwidth.data), float(form.tankheight.data))
+                  tankcapacityfull = float(form.tanklength.data) * float(form.tankwidth.data) * float(form.tankheight.data)
+                  tankcapacityhousing = float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)
+                  print(tankcapacityfull)
+                  print(type(tankcapacityfull))
+                  print("Tank Fill Capacity at date of Housing:", 
+                        (float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)))
+                  # form.tankheightdateanimalshoused.data = sensorreading[1]
+                  print(100*tankcapacityhousing/tankcapacityfull)
+                  form.tankheightdateanimalshoused.data = sensorreading[2]
+                  form.tankcapacityhousing.data = tankcapacityhousing
+                  print(form.farmnumber.data)
+                  # print("Tank Height Date Animals Housed: ", sensorreading[2])   	     
+                  return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
+      else:
+         return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
+      
 @app.route('/ContactUs', methods=['GET', 'POST'])
 def contactus():
    contactform = ContactUSForm()
    return render_template('ContactUs.html', title='ContactUs', form = contactform)
+
+
+
+def loadcsvfile():  
+   sensordatalist = []
+   with open('app/data/sensors.csv', 'r') as file:
+      reader = csv.reader(file)
+      for row in reader:
+         # change the time format from dd/mm/yyyy to yyyy-mm-dd
+         # print(row[0])
+         dateconverted= row[0]
+         dateconverted = dateconverted[6:] + "-" + dateconverted[3:5] + "-" + dateconverted[:2]
+         row[0] = dateconverted
+         sensordatalist.append(row)
+         # print(row)
+   return sensordatalist
 
 # @app.route('/', methods=['GET', 'POST'])
 # @app.route('/login', methods=['GET', 'POST'])

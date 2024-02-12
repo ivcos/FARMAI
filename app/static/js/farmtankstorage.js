@@ -11,6 +11,6 @@ function myFunction() {
   let tankheight =  document.getElementById("tankheight").value;
   console.log(tankheight)
   console.log(tanklength * tankwidth * tankheight)
-  document.getElementById("tankcapacity").value = tanklength * tankwidth * tankheight
-  document.getElementById("regulatoryfillcapacityallowed").value = (tanklength * tankwidth * (tankheight -0.02))
+  document.getElementById("tankcapacity").value = 1000 * tanklength * tankwidth * tankheight 
+  document.getElementById("regulatoryfillcapacityallowed").value = 1000 * (tanklength * tankwidth * (tankheight -0.02))
 }

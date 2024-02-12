@@ -27,9 +27,9 @@ class farmtankStorageForm(FlaskForm):
   regulatoryfillcapacityallowed = StringField('Regulatory Fill Level Allowed')
   dateanimalshoused = StringField('Date Animals Housed', validators=[DataRequired()])
   tankheightdateanimalshoused = StringField('Tank Height Date Animals Housed')
-  dateeightypercentfilled = StringField('Date Eighty Percent Filled')
-  dateninetypercentfilled = StringField('Date Eighty Percent Filled')
-  datefull = StringField('Date Full')
+  tankcapacityhousing = StringField('Tank Fill Capacity at date of Housing')
+  # dateninetypercentfilled = StringField('Date Eighty Percent Filled')
+  # datefull = StringField('Date Full')
         
   submit = SubmitField('Submit')
   submit2 = SubmitField('Reset')

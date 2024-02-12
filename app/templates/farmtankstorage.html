@@ -91,10 +91,10 @@
           </div>
           <div class="form-group mb-3">
             {{form.dateanimalshoused.label}}
-            {{form.regulatoryfillcapacityallowed(size=32, type="date", class="form-control", min="2023-10-01",
+            {{form.dateanimalshoused(size=32, type="date", class="form-control", min="2023-10-01",
             max="2023-11-30",
-            id="regulatoryfillcapacityallowed")}}
-            {% for error in form.regulatoryfillcapacityallowed.error %}
+            id="dateanimalshoused")}}
+            {% for error in form.dateanimalshoused.error %}
             <span style="color: red;">[{{error}}]</span>
             {% endfor %}
           </div>
@@ -108,7 +108,15 @@
             {{form.tankheightdateanimalshoused.label}}
             {{form.tankheightdateanimalshoused(size=32, class="form-control",
             id="tankheightdateanimalshoused")}}
-            {% for error in form.regulatoryfillcapacityallowed.error %}
+            {% for error in form.tankheightdateanimalshoused.error %}
+            <span style="color: red;">[{{error}}]</span>
+            {% endfor %}
+          </div>
+          <div class="form-group mb-3">
+            {{form.tankcapacityhousing.label}}
+            {{form.tankcapacityhousing(size=32, class="form-control",
+            id="tankcapacityhousing")}}
+            {% for error in form.tankcapacityhousing.error %}
             <span style="color: red;">[{{error}}]</span>
             {% endfor %}
           </div>
