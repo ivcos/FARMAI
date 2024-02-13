@@ -15,6 +15,7 @@ from app.forms import farmtankStorageForm, farmtankCalculationForm
 import shelve
 import csv
 import datetime
+import pickle
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -126,6 +127,7 @@ def farmtankstorage():
             # on the form that the animals were housed.
             sensordatalist = loadcsvfile()
             print(sensordatalist)
+            sensordatalistlength = len(sensordatalist)
             for sensorreading in sensordatalist:
                # print(sensorreading[0])
                # print(form.dateanimalshoused.data)
@@ -147,8 +149,27 @@ def farmtankstorage():
                   form.tankheightdateanimalshoused.data = sensorreading[2]
                   form.tankcapacityhousing.data = tankcapacityhousing
                   print(form.farmnumber.data)
-                  # print("Tank Height Date Animals Housed: ", sensorreading[2])   	     
-                  return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
+                  header= ['Date', 'Day No.', 'Sensor Height']
+                  data = []
+                  regressor_model = pickle.load(open('app/data/sensor-regessor-model.pk1','rb'))
+                  print(int(sensorreading[1]))
+                  print(type(sensorreading[1]))
+                  zeroprecictedsensorheightreached = False
+                  while not zeroprecictedsensorheightreached:
+                     for sensorreading in sensordatalist:
+                        print(sensorreading)
+                        sensorreading[1] = int(sensorreading[1])
+                        print(type(sensorreading[1]))
+                        predictedvalue = regressor_model.predict([[sensorreading[1]]])
+                        #data.append((sensorreading[0], sensorreading[1]), regressor_model.predict(sensorreading[[1]]))
+                        data.append([sensorreading[0], sensorreading[1], predictedvalue])
+                        if predictedvalue < 1:
+                           zeroprecictedsensorheightreached = True
+                           break
+                        #print(regressor_model.predict(sensorreading[[1]]))
+                     # print("Tank Height Date Animals Housed: ", sensorreading[2])   	     
+                     # return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
+                     return render_template('tankpredictions.html', title='Tank Predictions', data=data, header=header)
       else:
          return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
       

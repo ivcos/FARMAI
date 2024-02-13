@@ -44,6 +44,9 @@ unspalsh.com, UIfaces.co
 html, body {
   height: 100%;
 }
+body {
+  margin-top: 100px;
+}
 
 /* .container {
   display: flex;
