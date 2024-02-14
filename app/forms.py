@@ -30,7 +30,7 @@ class farmtankStorageForm(FlaskForm):
   tankcapacityhousing = StringField('Tank Fill Capacity at date of Housing')
   # dateninetypercentfilled = StringField('Date Eighty Percent Filled')
   # datefull = StringField('Date Full')
-        
+  tankdepth = int('Tank Depth')
   submit = SubmitField('Submit')
   submit2 = SubmitField('Reset')
 

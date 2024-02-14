@@ -30,18 +30,18 @@ def login():
    print(type(shelve_file))
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
-         print("User is registered")
+         # print("User is registered")
          flash('User {} is registered'.format(form.username.data))
       else:
-         print("User is not registered")
+         # print("User is not registered")
          flash('User {} is not registered'.format(form.username.data)) 
          return redirect(url_for('.register')) 
       if form.password.data == shelve_file[form.username.data][1]:
-         print("Password is correct")
+         # print("Password is correct")
          flash('Password is correct')
          return redirect(url_for('.farmtankstorage'))
       else:
-         print("Password is incorrect")
+         # print("Password is incorrect")
          flash('Password is incorrect')
          return redirect(url_for('.login'))
    if form.validate_on_submit():
@@ -126,7 +126,7 @@ def farmtankstorage():
             # import the sensors data to check the height of the tank the date entered
             # on the form that the animals were housed.
             sensordatalist = loadcsvfile()
-            print(sensordatalist)
+            #print(sensordatalist)
             sensordatalistlength = len(sensordatalist)
             for sensorreading in sensordatalist:
                # print(sensorreading[0])
@@ -139,17 +139,22 @@ def farmtankstorage():
                   print("Day Number: ", sensorreading[1])
                   print(float(form.tanklength.data), float(form.tankwidth.data), float(form.tankheight.data))
                   tankcapacityfull = float(form.tanklength.data) * float(form.tankwidth.data) * float(form.tankheight.data)
-                  tankcapacityhousing = float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)
+                  availablecapacityatanimalhousing = float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)
+                  print("Remaining Tank Capacity at date of Housing:", tankcapacityfull-availablecapacityatanimalhousing)
+                  fillcapacpitatdateofhousing = tankcapacityfull-availablecapacityatanimalhousing
+                  print("Remaining Tank Capacity at date of Housing:", fillcapacpitatdateofhousing)
+                  print("Tank Fill Level at date of Housing:", tankcapacityfull-fillcapacpitatdateofhousing) 
+                  print("percentagefill", 100 * (tankcapacityfull-fillcapacpitatdateofhousing)/tankcapacityfull)
                   print(tankcapacityfull)
                   print(type(tankcapacityfull))
-                  print("Tank Fill Capacity at date of Housing:", 
-                        (float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)))
+                  # print("Remaining Tank Capacity at date of Housing:", 
+                  #       (float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(sensorreading[2]))/100)))
                   # form.tankheightdateanimalshoused.data = sensorreading[1]
-                  print(100*tankcapacityhousing/tankcapacityfull)
+                  # print(100*tankcapacityhousing/tankcapacityfull)
                   form.tankheightdateanimalshoused.data = sensorreading[2]
-                  form.tankcapacityhousing.data = tankcapacityhousing
+                  form.tankcapacityhousing.data = fillcapacpitatdateofhousing
                   print(form.farmnumber.data)
-                  header= ['Date', 'Day No.', 'Sensor Height']
+                  header= ['Date', 'Day No.', 'Tank Sensor Height Measurement(cm)', 'Available Tank Capacity(%)']
                   data = []
                   regressor_model = pickle.load(open('app/data/sensor-regessor-model.pk1','rb'))
                   print(int(sensorreading[1]))
@@ -157,12 +162,14 @@ def farmtankstorage():
                   zeroprecictedsensorheightreached = False
                   while not zeroprecictedsensorheightreached:
                      for sensorreading in sensordatalist:
-                        print(sensorreading)
+                        #print(sensorreading)
                         sensorreading[1] = int(sensorreading[1])
-                        print(type(sensorreading[1]))
+                        #print(type(sensorreading[1]))
                         predictedvalue = regressor_model.predict([[sensorreading[1]]])
+                        availablecapacity = 100 * (tankcapacityfull - (float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(predictedvalue))/100)))/tankcapacityfull
+                        print("percentagefill", availablecapacity)
                         #data.append((sensorreading[0], sensorreading[1]), regressor_model.predict(sensorreading[[1]]))
-                        data.append([sensorreading[0], sensorreading[1], predictedvalue])
+                        data.append([sensorreading[0], sensorreading[1], predictedvalue, availablecapacity])
                         if predictedvalue < 1:
                            zeroprecictedsensorheightreached = True
                            break
