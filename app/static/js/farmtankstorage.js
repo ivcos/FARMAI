@@ -14,3 +14,68 @@ function myFunction() {
   document.getElementById("tankcapacity").value = 1000 * (tanklength) * (tankwidth) * (tankheight) 
   document.getElementById("regulatoryfillcapacityallowed").value = 1000 * (tanklength * tankwidth * (tankheight -0.02))
 }
+
+function validateAlphanumeric(input) {
+  const alphanumericRegex = /^[a-zA-Z0-9]+$/;
+  return alphanumericRegex.test(input);
+}
+
+
+function validatefarmnumber () {
+  let farmnumber = document.getElementById("farmnumber").value
+  console.log(farmnumber)
+  if (!validateAlphanumeric(farmnumber)){
+    document.getElementById("farm-number-error-message").innerHTML= "You entered: " + farmnumber + ". Only numbers and letters allowed" 
+  }
+ else {
+  document.getElementById("farm-number-error-message").innerHTML=" "
+}
+}
+
+
+function validatetanklength () {
+  let tanklength = document.getElementById("tanklength").value
+  console.log(tanklength)
+  if (Number.parseFloat(tanklength) > 18 && Number.parseFloat(tanklength) < 22) {
+      document.getElementById("tank-length-error-message").innerHTML=" "
+    }
+ else {
+  document.getElementById("tank-length-error-message").innerHTML= "You entered: " + tanklength + ". Only numbers allowed between 18 and 22" 
+}
+}
+
+function validatetankwidth () {
+  let tankwidth = document.getElementById("tankwidth").value
+  console.log(tankwidth)
+  if (Number.parseFloat(tanklength) > 10 && Number.parseFloat(tanklength) < 12) {
+    document.getElementById("tank-length-error-message").innerHTML=" "
+  }
+ else {
+  document.getElementById("tank-width-error-message").innerHTML= "You entered: " + tankwidth + ". Only numbers allowed 10 and 12" 
+}
+}
+
+function validatetankheight () {
+let tankheight = document.getElementById("tankheight").value
+console.log(tankheight)
+if (Number.parseFloat(tanklength) > 2.0 && Number.parseFloat(tanklength) < 2.5) {
+  document.getElementById("tank-length-error-message").innerHTML=" "
+}
+else {
+document.getElementById("tank-height-error-message").innerHTML= "You entered: " + tankheight + ". Only numbers allowed between 2.0 and 2.4" 
+}
+}
+
+
+//Clear the form input data and remove the mesaage again
+// document.getElementById("calving_form").reset();
+// message.textContent = "";
+
+function onDOMLoaded()
+{
+  console.log("test")
+
+}
+
+
+document.addEventListener("DOMContentLoaded", onDOMLoaded);

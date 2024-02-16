@@ -240,3 +240,11 @@ border: 5px solid;
 #register-buton, #login-buton{
   padding: 0px 0px 6px 0px;
 }
+
+#farm-number-error-message, #tank-length-error-message,
+#tank-width-error-message, #tank-height-error-message{
+  display: hidden;
+  color: red;
+}
+
+
