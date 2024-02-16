@@ -70,10 +70,6 @@ def register():
       print("Emails Registered", emailsregistered)
       shelvefile.close()
       form = RegistrationForm()
-      # print(form.username.data)
-      # print(form.email.data)
-      # print(form.password.data)
-      # print(form.password2.data)
       if form.validate_on_submit():
          userRegistration = User(form.username.data, form.email.data, form.password.data)
          if form.username.data in shelvefiledict.keys():

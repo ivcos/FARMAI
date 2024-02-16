@@ -2,7 +2,105 @@
 {% block title %}Login{% endblock %}
 {% block body %}
 
-<h1>Home Page1234567</h1>
-{% endblock %}
+<!-- <h1>Home Page1234567</h1> -->
 
-</html>
+<body>
+  <div id="wrapper">
+    <header class="main_header box1">
+      <div class="logo box2">
+        <img src="images/FarmAILogo1.png" alt="The FarMAI logo" width="127" height="54">
+      </div>
+      <h1>Farmers Controling Their Data</h1>
+
+    </header>
+
+
+    <main>
+      <div class="flex-container row">
+
+        <div class="flex-child card text-center border-success mb-2" id="container-farmers-in-control">
+          <div class="card-header">
+
+            <!-- <h2>Farmers Controlling Their Data</h2> -->
+          </div>
+          <div class="card-body">
+            <img class="card-img-top img-fluid " src="static/img/generic_farmer_with_phone.jpg"
+              alt=" The FarMAI logo" />
+            <p class="card-text"> Farmers are suffering from <span class="span-data-control">DATA OVERLOAD AND LACK OF
+                CONTROL</span> of
+              their Farm data.
+              The farmer owns the <em>data</em> about their herd, <em>data</em> about
+              their land, <em>data</em> about their farm practices,
+              <em>data</em> about the way the farmer protects the environment.Our FARMAI phone App gives full control
+              back
+              to the farmer.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slurry Management -->
+        <div class="flex-child card text-center border-success mb-2" id="container-slurry-management">
+          <section id="section-slurry-managemeent">
+            <div class="card-header">
+              <!-- <h2>AgriIoT Management</h2> -->
+            </div>
+            <div class="card-body">
+              <!-- <h3 class="card-title">Slurry Management</h3> -->
+              <img class="card-img-top img-fluid " src="static/img/IMG_20231030_124453_red.jpg" alt="The FarMAI logo" />
+              <p class="card-text">
+                With our new IoT sensor installed on your tank, we can now accurately
+                predict when your tank will be full using sensor readings and Aritficial Intelligence (AI).
+                You must register for our service once you have
+                installed the sensor.
+              </p>
+              <!--BUTTON WITH COLLAPSE-->
+              <!-- <button class="btn btn-success d-block mb-4" data-bs-toggle="collapse"
+                data-bs-target="#collapse-btn-4">Read
+                More</button> -->
+              <!-- <div class="collapse mb-5" id="collapse-btn-4">
+                <div class="card">
+                  <div class="card-body">
+                    <ul class="list-group  mb-6">
+                      <li class="list-group-item">
+                        Slurry Tank Capacity Storage Calculator
+                      </li>
+                      <li class="list-group-item">
+                        Slurry Storage Required Calculator
+                      </li>
+                      <li class="list-group-item">
+                        Current % Fill Capacity of Slurry Tank
+                      </li>
+                      <li class="list-group-item">
+                        Current Fill Volume of Slurry Tank
+                      </li>
+                      <li class="list-group-item">
+                        Predicted Fill Date of Slurry Tank
+                      </li>
+                      <li class="list-group-item">
+                        Slurry Tank Level Alerts when levels reach critical levels
+                      </li>
+                      <li class="list-group-item">
+                        Slurry Export Log to tack movement of slurry off the farm
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <a class="btn btn-success w-100" src="SlurryManagement.html">Slurry ManagementManagement</a>
+              </div> -->
+            </div>
+          </section>
+        </div>
+
+
+
+        <!-- <div class="back-to-top-p">
+          <a href="#wrapper" class="back-top-btn">Back to Top</a>
+        </div> -->
+    </main>
+    <footer>
+      <p><small>Copyright &copy;2023 FARMAI.</small></p>
+    </footer>
+  </div>
+  {% endblock %}
+
+  </html>
