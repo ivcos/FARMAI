@@ -56,6 +56,10 @@ html, body {
   height: 100%;
 } */
 
+h1 {
+  text-align: center;
+}
+
 h2 {
   margin-bottom: 20px;
   color: blue;
@@ -233,6 +237,6 @@ border: 5px solid;
   }
 }
 
-#register-buton{
+#register-buton, #login-buton{
   padding: 0px 0px 6px 0px;
 }
