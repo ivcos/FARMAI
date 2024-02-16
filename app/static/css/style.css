@@ -203,6 +203,12 @@ border: 5px solid;
   width: 75%;
   padding: 10px;
 }
+#container-slurry-management{
+  margin-top: 0px;
+}
+
+
+
 
 .flex-container {
   display: flex;
@@ -221,8 +227,12 @@ border: 5px solid;
   display: flex; /* equal height of the children */
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 800px) {
   .flex-container {
     flex-direction: column;
   }
+}
+
+#register-buton{
+  padding: 0px 0px 6px 0px;
 }
