@@ -24,25 +24,19 @@ def login():
    #instantiate the form class
    form = LoginForm()
    shelve_file = shelve.open("users.db")
-   # print(type(shelve_file))
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
-         # print("User is registered")
          flash('User {} is registered'.format(form.username.data))
       else:
-         # print("User is not registered")
          flash('User {} is not registered'.format(form.username.data)) 
          return redirect(url_for('.register')) 
       if form.password.data == shelve_file[form.username.data][1]:
-         # print("Password is correct")
          flash('Password is correct')
          return redirect(url_for('.farmtankstorage'))
       else:
-         # print("Password is incorrect")
          flash('Password is incorrect')
          return redirect(url_for('.login'))
    if form.validate_on_submit():
-      #flash() function is a way to provide feedback to a user
       flash('Login requested for user {}, remember_me={}'.format(
          form.username.data, form.remember_me.data))
       return redirect(url_for('.index'))
