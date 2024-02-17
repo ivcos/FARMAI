@@ -23,9 +23,6 @@ import pickle
 def login():
    #instantiate the form class
    form = LoginForm()
-   # print(form.username.data)
-   # print(form.password.data)
-   # Check if user is registered and fields entered are valid
    shelve_file = shelve.open("users.db")
    # print(type(shelve_file))
    if request.method == 'POST':
@@ -143,10 +140,10 @@ def farmtankstorage():
       else:
          return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
       
-@app.route('/ContactUs', methods=['GET', 'POST'])
-def contactus():
-   contactform = ContactUSForm()
-   return render_template('ContactUs.html', title='ContactUs', form = contactform)
+# @app.route('/ContactUs', methods=['GET', 'POST'])
+# def contactus():
+#    contactform = ContactUSForm()
+#    return render_template('ContactUs.html', title='ContactUs', form = contactform)
 
 
 
@@ -156,7 +153,6 @@ def loadcsvfile():
       reader = csv.reader(file)
       for row in reader:
          # change the time format from dd/mm/yyyy to yyyy-mm-dd
-         # print(row[0])
          dateconverted= row[0]
          dateconverted = dateconverted[6:] + "-" + dateconverted[3:5] + "-" + dateconverted[:2]
          row[0] = dateconverted
@@ -164,24 +160,3 @@ def loadcsvfile():
          # print(row)
    return sensordatalist
 
-# @app.route('/', methods=['GET', 'POST'])
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     error = None
-#     if request.method == 'GET':
-#        return render_template('login.html', title='Home') 
-#     else:
-#       username = request.form['username']
-#       password = request.form['password']
-#       if username != 'admin' or password != 'admin':
-#          error = 'Invalid credentials. Please try again.'
-#          print(username)
-#          print(password)
-#          return render_template('login.html', title='Home', error=error)       
-#       else:
-#         print(username)
-#         print(password)
-#         return redirect(url_for('home'))  
-
-# the render_template function invokes the Jinia tempate. Jinja substitutes
-#   {{ ... }} blocks with the corresponding values, given by the arguments
