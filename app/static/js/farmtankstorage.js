@@ -39,7 +39,7 @@ function validatetanklength () {
   if (Number.parseFloat(tanklength) > 18 && Number.parseFloat(tanklength) < 22) {
       document.getElementById("tank-length-error-message").innerHTML=" "
     }
- else {
+  else {
   document.getElementById("tank-length-error-message").innerHTML= "You entered: " + tanklength + ". Only numbers allowed between 18 and 22" 
 }
 }
@@ -47,19 +47,23 @@ function validatetanklength () {
 function validatetankwidth () {
   let tankwidth = document.getElementById("tankwidth").value
   console.log(tankwidth)
-  if (Number.parseFloat(tanklength) > 10 && Number.parseFloat(tanklength) < 12) {
-    document.getElementById("tank-length-error-message").innerHTML=" "
+  console.log(Number.parseFloat(tankwidth))
+  if (Number.parseFloat(tankwidth) > 9 && Number.parseFloat(tankwidth) < 13) {
+    console.log("ok")
+    document.getElementById("tank-width-error-message").innerHTML=" "
   }
- else {
-  document.getElementById("tank-width-error-message").innerHTML= "You entered: " + tankwidth + ". Only numbers allowed 10 and 12" 
+  else {
+  console.log("ok1")
+  console.log(Number.parseFloat(tankwidth))
+  document.getElementById("tank-width-error-message").innerHTML= "You entered: " + tankwidth + ". Only numbers allowed 9 and 12" 
 }
 }
 
 function validatetankheight () {
 let tankheight = document.getElementById("tankheight").value
 console.log(tankheight)
-if (Number.parseFloat(tanklength) > 2.0 && Number.parseFloat(tanklength) < 2.5) {
-  document.getElementById("tank-length-error-message").innerHTML=" "
+if (Number.parseFloat(tankheight) > 2.0 && Number.parseFloat(tankheight) < 2.5) {
+  document.getElementById("tank-height-error-message").innerHTML=" "
 }
 else {
 document.getElementById("tank-height-error-message").innerHTML= "You entered: " + tankheight + ". Only numbers allowed between 2.0 and 2.4" 

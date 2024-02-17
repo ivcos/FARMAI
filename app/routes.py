@@ -23,11 +23,11 @@ import pickle
 def login():
    #instantiate the form class
    form = LoginForm()
-   print(form.username.data)
-   print(form.password.data)
-   # Check if user is registered and fields are valid
+   # print(form.username.data)
+   # print(form.password.data)
+   # Check if user is registered and fields entered are valid
    shelve_file = shelve.open("users.db")
-   print(type(shelve_file))
+   # print(type(shelve_file))
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
          # print("User is registered")
@@ -150,7 +150,7 @@ def farmtankstorage():
                   form.tankheightdateanimalshoused.data = sensorreading[2]
                   form.tankcapacityhousing.data = fillcapacpitatdateofhousing
                   print(form.farmnumber.data)
-                  header= ['Date', 'Day No.', 'Tank Sensor Height Measurement(cm)', 'Available Tank Capacity(%)']
+                  header= ['Date', 'Tank Sensor Height Measurement(cm)', 'Available Tank Capacity(%)']
                   data = []
                   regressor_model = pickle.load(open('app/data/sensor-regessor-model.pk1','rb'))
                   print(int(sensorreading[1]))
@@ -165,7 +165,8 @@ def farmtankstorage():
                         availablecapacity = 100 * (tankcapacityfull - (float(form.tanklength.data) * float(form.tankwidth.data) * (float(form.tankheight.data)-(float(predictedvalue))/100)))/tankcapacityfull
                         print("percentagefill", availablecapacity)
                         #data.append((sensorreading[0], sensorreading[1]), regressor_model.predict(sensorreading[[1]]))
-                        data.append([sensorreading[0], sensorreading[1], predictedvalue, availablecapacity])
+                        #data.append([sensorreading[0], sensorreading[1], predictedvalue, availablecapacity])
+                        data.append([sensorreading[0], int(round(predictedvalue[0], 0)), round(availablecapacity, 1)])
                         if predictedvalue < 1:
                            zeroprecictedsensorheightreached = True
                            break

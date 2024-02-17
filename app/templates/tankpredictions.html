@@ -3,9 +3,10 @@
 
 
 <div class="container pt-5">
-  <h1>Tank Predictions Output</h1>
+
   {% block body %}
-  <caption>List of Tank Fill Levels until Tank is Full</caption>
+  <h1>Tank Predictions Output</h1>
+  <!-- <caption>List of Tank Fill Levels until Tank is Full</caption> -->
   <table class="table table-striped table-bordered table-hover table-sm">
 
     <thead class="thead-dark">
@@ -23,7 +24,12 @@
     </tr>
     {% endfor %}
   </table>
+  <footer>
+    <p class="copyright mb-2">&copy; FarmAI - Putting Artificial Intelligence in Farming
+    </p>
+  </footer>
   {% endblock %}
+
 </div>
 
 </html>
