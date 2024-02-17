@@ -7,7 +7,7 @@
 <div class="container h-100">
   <div class="row h-100 align-items-center justify-content-center">
     <div class="col-md-6">
-      <!-- Form -->
+      <!-- REGISTRATION FORM -->
       <form action="" method="post" novalidate>
         <!-- <input autocomplete="false" name="hidden" type="text" style="display:none;"> -->
         {{form.hidden_tag()}}
@@ -18,7 +18,8 @@
         <!-- <span style="color:red;">{{ username }}{{ error }}</span> -->
         {% if error %}
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          {{ username }}{{ error }}> You should check in on some of those fields below.
+          <!-- {{ username }}{{ error }}> You should check in on some of those fields below. -->
+          {{ error }}> You should check in on some of those fields below.
           <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

@@ -4,7 +4,7 @@ import shelve
 class Usersdb:
   # Constructor for the Users_db class to store the users in a shelve database
   def __init__(self):
-    self.__users = shelve.open('users.db')
+    self.__users = shelve.open('app/data/users.db')
     print(self.__users, "usersdb created")
 
   # destructor to close the shelve database

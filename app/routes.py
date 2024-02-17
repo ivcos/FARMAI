@@ -23,7 +23,8 @@ import pickle
 def login():
    #instantiate the form class
    form = LoginForm()
-   shelve_file = shelve.open("users.db")
+   # shelve_file = shelve.open("users.db")
+   shelve_file = shelve.open("app/data/users.db")
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
          flash('User {} is registered'.format(form.username.data))
@@ -54,7 +55,7 @@ def logout():
 
 @app.route('/register',  methods=['GET', 'POST'])
 def register():
-      shelvefile = shelve.open("users.db") 
+      shelvefile = shelve.open("app/data/users.db") 
       shelvefiledict = dict(shelvefile)
       print("Items in the sample shelve file: ", (shelvefiledict.items()))
       emailsregistered = [email[0] for email in shelvefiledict.values()]
@@ -66,7 +67,7 @@ def register():
          if form.username.data in shelvefiledict.keys():
             print("User already registered")
             error = "User " + form.username.data + " already registered. Please Use different Username"
-            flash('User {} is already registered'.format(form.username.data))
+            # flash('User {} is already registered'.format(form.username.data))
             return render_template('register.html', title='Register', form = form, error=error)
          elif form.email.data in emailsregistered:
             print(shelvefiledict.values())
