@@ -27,12 +27,12 @@ def login():
    shelve_file = shelve.open("app/data/users.db")
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
-         flash('User {} is registered'.format(form.username.data))
+         flash('User {} logged in successfully'.format(form.username.data))
       else:
          flash('User {} is not registered'.format(form.username.data)) 
          return redirect(url_for('.register')) 
       if form.password.data == shelve_file[form.username.data][1]:
-         flash('Password is correct')
+         # flash('Password is correct')
          return redirect(url_for('.farmtankstorage'))
       else:
          flash('Password is incorrect')
@@ -73,7 +73,7 @@ def register():
             print(shelvefiledict.values())
             print("Email already registered")
             error = "Email " + form.email.data + " already registered. Please Use different Email"
-            flash('Email {} is already registered'.format(form.email.data))
+            # flash('Email {} is already registered'.format(form.email.data))
             return render_template('register.html', title='Register', form = form, error=error)
          else:
             print(form.email.data)

@@ -18,6 +18,17 @@ function onDOMLoaded()
   console.log("test end")
 }
 
+// Function to remove flash messages after 5 seconds
+window.onload = function() {
+  setTimeout(function() {
+      let flashMessages = document.querySelectorAll('.alert');
+      console.log(flashMessages)
+      flashMessages.forEach(function(message) {
+          message.style.display = 'none';
+      });
+  }, 5000);
+};
+
 // Attach the onDOMLoaded function to the DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", onDOMLoaded);
 

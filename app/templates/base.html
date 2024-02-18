@@ -52,6 +52,15 @@
         </div>
       </nav>
     </header>
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <!-- {{ username }}{{ error }}> You should check in on some of those fields below. -->
+      {{message}}
+      <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
     <!-- placeholder for content -->
     <div class="container pt-10"></div>
     {% block body %}
@@ -62,7 +71,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
     crossorigin="anonymous"></script>
-  {% with messages = get_flashed_messages() %}
+  <!-- {% with messages = get_flashed_messages() %}
   {% if messages %}
   <ul>
     {% for message in messages %}
@@ -70,7 +79,7 @@
     {% endfor %}
   </ul>
   {% endif %}
-  {% endwith %}
+  {% endwith %} -->
 </body>
 
 </html>
