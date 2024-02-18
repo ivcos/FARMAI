@@ -70,18 +70,18 @@ def register():
             # flash('User {} is already registered'.format(form.username.data))
             return render_template('register.html', title='Register', form = form, error=error)
          elif form.email.data in emailsregistered:
-            print(shelvefiledict.values())
-            print("Email already registered")
+            # print(shelvefiledict.values())
+            # print("Email already registered")
             error = "Email " + form.email.data + " already registered. Please Use different Email"
             # flash('Email {} is already registered'.format(form.email.data))
             return render_template('register.html', title='Register', form = form, error=error)
          else:
-            print(form.email.data)
-            print("User not registered")
+            # print(form.email.data)
+            # print("User not registered")
             flash('User {} is not registered'.format(form.username.data))
-            print(userRegistration.username)
-            print(userRegistration.email)
-            print(userRegistration.password)
+            # print(userRegistration.username)
+            # print(userRegistration.email)
+            # print(userRegistration.password)
             userdb= Usersdb()
             userdb.add_user(userRegistration)
             userdb.__del__()
@@ -90,13 +90,13 @@ def register():
             # open a shelf file 
             #shelve_file = shelve.open("users.db") 
             print("Items in the sample shelve file: ", list(shelvefiledict.items())) 
-            print() 
+            # print() 
             msg="Thank you. User " + form.username.data + " has been registered"
             print(msg)
             return redirect(url_for('.login', msg=msg))
       return render_template('register.html', title='Register', form=form)
 
-
+# View function mapped to /farmstorage URL that creates an instance of the LoginForm and handles data submitted
 @app.route('/farmtankstorage', methods=['GET', 'POST'])
 def farmtankstorage():
       form = farmtankStorageForm()
@@ -135,14 +135,11 @@ def farmtankstorage():
       else:
          return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
       
-# @app.route('/ContactUs', methods=['GET', 'POST'])
-# def contactus():
-#    contactform = ContactUSForm()
-#    return render_template('ContactUs.html', title='ContactUs', form = contactform)
-
 
 
 def loadcsvfile():  
+   """Loads the sensor data that was used to train the model into a list
+    """
    sensordatalist = []
    with open('app/data/sensors.csv', 'r') as file:
       reader = csv.reader(file)
