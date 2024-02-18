@@ -1,4 +1,4 @@
-#!/home/ioshea/FARMAI/venv/bin/python3
+#!/home/ioshea/FARMAI/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

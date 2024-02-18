@@ -1,0 +1,12 @@
+This website gives farmers visibility as to when the tanks will be full.
+Ultrasonic Sensors are installed on tanks to measure the distance from the top of
+the tank to the top of the fluid. The difference between the distance measured 
+by the ultrasonic sensor and the height of the tank is the height of the material
+in the tank. Sesor measurements were collected for the period from the 2023-10-15
+and 2023-11-30. These measurements were used as as an input into a Linear Regression
+Macheine Learning Model.  This model is then used to predict the height measured by the sensor
+and the volume per tank on a daily basis.
+
+In the tankpredictions.html, the user can the see the predicted height measured by the sensor
+and the % capacity in the tank.
+
