@@ -12,13 +12,10 @@ class Usersdb:
     self.__users.close()
 
   def add_user(self, userRegistration):
-    # self.__users[userRegistration.get_username()] = userRegistration.get_username()
-    # self.__users[userRegistration.get_email()] = userRegistration.get_email()
-    # self.__users[userRegistration.get_password()] = userRegistration.get_password()
     self.__users[userRegistration.get_username()] = [userRegistration.get_email(), userRegistration.get_password()]
-    # self.users.sync()
-  # Method to add a user to the shelve database
     
+  def add_contact(self, contactUser):
+    self.__users[contactUser.get_email()] = [contactUser.get_firstname(), contactUser.get_lastname(), contactUser.get_mobilenumber()]
 			
 class User:
 
@@ -53,4 +50,25 @@ class SlurryStorageTank:
     # self.ninetypercentfilled = self.tankcapacity * 0.1
     # self.datefull = self.tankcapacity *0.8
     
-    
+class ContactUser:
+  def __init__(self, firstname, lastname, email, mobilenumber):
+    self.firstname = firstname
+    self.lastname = lastname
+    self.email = email
+    self.mobilenumber = mobilenumber
+
+  def __repr__(self):
+    return '<User {}>'.format(self.firstname)
+      
+  def get_firstname(self):
+    return self.firstname
+      
+  def get_lastname(self):
+    return self.lastname
+      
+  def get_email(self):
+    return self.email
+      
+  def get_mobilenumber(self): 
+    return self.mobilenumber
+

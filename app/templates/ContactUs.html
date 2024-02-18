@@ -1,48 +1,58 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
+{% block title %}Contact Us{% endblock %}
 {% block body %}
 
-<h1>Contact Us Page</h1>
-<p>For more information, please contact us at:</p>
-<p>Phone: 123-456-7890</p>
-<div class="form-group mb-3">
-  {{form.firstname.label}}
-  {{form.firstname(size=32, class="form-control", id="firstname")}}
-  {% for error in form.firstname.errors %}
-  <span style="color: red;">[{{error| upper}}]</span>
-  {% endfor %}
-</div>
-<div class="form-group mb-3">
-  {{form.lastname.label}}
-  {{form.lastname(size=32, class="form-control", id="lastname")}}
-  {% for error in form.lastname.errors %}
-  <span style="color: red;">[{{error| upper}}]</span>
-  {% endfor %}
-</div>
-<div class="form-group mb-3">
-  {{form.email.label}}
-  {{form.email(size=32, class="form-control", id="email")}}
-  {% for error in form.email.errors %}
-  <span style="color: red;">[{{error| upper}}]</span>
-  {% endfor %}
-</div>
-<div class="form-group mb-3">
-  {{form.mobilenumber.label}}
-  {{form.mobilenumber(size=32, class="form-control", id="mobilenumber")}}
-  {% for error in form.mobilenumber.errors %}
-  <span style="color: red;">[{{error| upper}}]</span>
-  {% endfor %}
-</div>
-<!---SELECT FARM TYPE-->
-<div class="form-group">
-  {{form.farmtype.label}}
-  {{form.farmtype(size=32, class="form-control", id="farmtype")}}
-  {% for error in form.farmtype.errors %}
-  <span style="color: red;">[{{error| upper}}]</span>
-  {% endfor %}
+<div class="forms_container pt-5 mt-10" id="contactusform">
+  <!-- <h1 class=" text-center mt-1 ">FARMERS IN CONTROL OF THEIR DATA - REGISTER </h1> -->
+  <!-- <div class=" container border border-success border-width-custom-4 "> -->
+
+  <div class="container">
+    <div class=" row align-items-center justify-content-center">
+      <div class="col-md-6 pt-10">
+        <!-- Form -->
+        <form action="" method="post" novalidate>
+          <h1>Contact Us Page</h1>
+          {{form.hidden_tag()}}
+          <div class="form-group mb-3">
+            {{form.firstname.label}}
+            {{form.firstname(size=32, class="form-control", id="firstname")}}
+            {% for error in form.firstname.errors %}
+            <span style="color: red;">[{{error| upper}}]</span>
+            {% endfor %}
+          </div>
+          <div class="form-group mb-3">
+            {{form.lastname.label}}
+            {{form.lastname(size=32, class="form-control", id="lastname")}}
+            {% for error in form.lastname.errors %}
+            <span style="color: red;">[{{error| upper}}]</span>
+            {% endfor %}
+          </div>
+          <div class="form-group mb-3">
+            {{form.email.label}}
+            {{form.email(size=32, class="form-control", id="email")}}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{error| upper}}]</span>
+            {% endfor %}
+          </div>
+          <div class="form-group mb-3">
+            {{form.mobilenumber.label}}
+            {{form.mobilenumber(size=32, class="form-control", id="mobilenumber")}}
+            {% for error in form.mobilenumber.errors %}
+            <span style="color: red;">[{{error| upper}}]</span>
+            {% endfor %}
+          </div>
+          <div class=" form-group mb-3">
+            <button type="submit" class="btn btn-success btn-lg btn-block enabled">Submit </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
 </div>
-
+<footer>
+  <p><small>Copyright &copy;2023 FARMAI- Putting Artificial Intelligence into Farming.</small></p>
+</footer>
 {% endblock %}
 
 </html>

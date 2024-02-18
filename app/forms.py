@@ -45,8 +45,7 @@ class ContactUSForm(FlaskForm):
   firstname = StringField('First Name', validators=[DataRequired()])
   lastname = StringField('Last Name', validators=[DataRequired()])
   email = StringField('Email', validators=[DataRequired(), Length(min=4, max=25)])
-  mobilenumber = StringField('Mobile')
-  farmtype = SelectField('Farm Type', validators=[DataRequired()], choices=[('Pig', 'Pig'), ('Poultry', 'Poultry'), ('Dairy', 'Dairy'), ('Beef', 'Beef'), ('Sheep', 'Sheep'), ('Other', 'Other')])  
+  mobilenumber = StringField('Mobile')  
   submit = SubmitField('Submit')
   
                          

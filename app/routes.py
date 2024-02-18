@@ -12,6 +12,7 @@ from app.models import User
 from app.models import Usersdb
 from app.forms import ContactUSForm
 from app.forms import farmtankStorageForm, farmtankCalculationForm
+from app.models import ContactUser
 import shelve
 import csv
 import datetime
@@ -27,7 +28,8 @@ def login():
    shelve_file = shelve.open("app/data/users.db")
    if request.method == 'POST':
       if form.username.data in shelve_file.keys():
-         flash('User {} logged in successfully'.format(form.username.data))
+         print("user exists")
+         # flash('User {} logged in successfully'.format(form.username.data))
       else:
          flash('User {} is not registered'.format(form.username.data)) 
          return redirect(url_for('.register')) 
@@ -78,7 +80,7 @@ def register():
          else:
             # print(form.email.data)
             # print("User not registered")
-            flash('User {} is not registered'.format(form.username.data))
+            #flash('User {} is not registered'.format(form.username.data))
             # print(userRegistration.username)
             # print(userRegistration.email)
             # print(userRegistration.password)
@@ -135,6 +137,23 @@ def farmtankstorage():
       else:
          return render_template('farmtankstorage.html', title='Slurry Storage', form=form)
       
+
+@app.route('/ContactUs', methods=['GET', 'POST'])
+def contactus():
+    form = ContactUSForm()
+    if form.validate_on_submit():
+       contactuser = ContactUser(form.firstname.data, form.lastname.data, form.email.data, form.mobilenumber.data)
+       userdb= Usersdb()
+       userdb.add_contact(contactuser)
+       userdb.__del__()
+       # Check that Contact was added successfully
+       shelvefile = shelve.open("app/data/users.db") 
+       shelvefiledict = dict(shelvefile)
+       print("Items in the sample shelve file: ", (shelvefiledict.items())) 
+       shelvefile.close()
+       flash('Contact added successfully for user {}, email={}'.format(
+               form.firstname.data, form.email.data))
+    return render_template('ContactUs.html', title='ContactUs', form=form)
 
 
 def loadcsvfile():  
