@@ -8,25 +8,22 @@ import requests
 import json
 
 
-# Calculate MAE
+# Calculate Mean Absolute Error to determine how well the model selected performs on new unseen data
 def mae(y_test, y_pred):
     sum_test = 0.0
     for i in range(len(y_test)):
         sum_test += abs(y_test[i] - y_pred[i])
     return sum_test / len(y_test)
 
-# Load the dataset
+# Load the dataset into dependent and independent variables
 dataset = pd.read_csv('app/data/sensors.csv')
 X = dataset.iloc[:, 1].values
 y = dataset.iloc[:, 2].values
 
-# Split the dataset into the training set and test set
+# Split the dataset into the training set and test set.
+# The model is trained on the Test set and model is then tested agaisnt the hold out test set
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.33, random_state = 0)
 
-print(X_train)
-print(len(X_train))
-print(X_test)
-print(len(X_test))
 
 # Instantiate and  Train the model
 regressor=LinearRegression()
