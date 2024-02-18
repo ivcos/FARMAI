@@ -79,15 +79,18 @@ function validatedateanimalshoused() {
   //Check dates between the 2023-10-15 and 2023-11-31"
   // const dateanimalshouseddateformat = new Date(dateanimalshoused)
   // console.log(typeof dateanimalshouseddateformat)
-  const dateanimalshousedformatted = new Date(dateanimalshoused)
+  let dateanimalshousedformatted = new Date(dateanimalshoused)
+  dateanimalshousedformatted.split("-").reverse().join("/");
   console.log(dateanimalshousedformatted)
-  const startdate = new Date("2023-10-15")
-  const enddate = new Date("2023-11-31")
+  // const startdate = new Date("2023-10-15")
+  // const enddate = new Date("2023-11-31")
+    const startdate = new Date("15/10/2023")
+    const enddate = new Date("31/11/2023")
   if (dateanimalshousedformatted > startdate && dateanimalshousedformatted < enddate ){
     console.log('✅ date is between the 2 dates');
   } else {
     console.log('⛔️ date is not in the range');
-    document.getElementById("date-error-message").innerHTML= "You entered: " + dateanimalshousedformatted + ". Only dates between 2023-10-15 and 2023-11-30 allowed"
+    document.getElementById("date-error-message").innerHTML= "You entered: " + dateanimalshousedformatted + ". Only dates between 15/10/2023 and 30/11/2023 allowed"
   }
 }
 
