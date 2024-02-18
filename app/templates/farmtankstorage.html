@@ -46,7 +46,6 @@
 
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                     </div>
 
                   </div>
@@ -118,7 +117,6 @@
 
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                       </div>
 
                     </div>
@@ -139,27 +137,7 @@
             <div class=" form-group mb-3">
               <button type="submit" class="btn btn-success btn-lg btn-block enabled">Calculate <i
                   class="fa fa-calculator" onclick="validateforminputs()"></i></button>
-              <!-- <button type="submit" class="btn btn-success btn-lg btn-block disabled">Calculate <i
-              class="fa fa-calculator"></i></button> -->
             </div>
-            <!-- <div class="form-group mb-3">
-              {{form.tankheightdateanimalshoused.label}}
-              {{form.tankheightdateanimalshoused(size=32, class="form-control",
-              id="tankheightdateanimalshoused")}}
-              {% for error in form.tankheightdateanimalshoused.error %}
-              <span style="color: red;">[{{error}}]</span>
-              {% endfor %}
-            </div> -->
-            <!-- <div class="form-group mb-3">
-              {{form.tankcapacityhousing.label}}
-              {{form.tankcapacityhousing(size=32, class="form-control",
-              id="tankcapacityhousing")}}
-              {% for error in form.tankcapacityhousing.error %}
-              <span style="color: red;">[{{error}}]</span>
-              {% endfor %}
-            </div>
-            - MODAL to Explain what this field means -->
-            <!-- Button trigger modal -->
 
         </form>
       </div>
@@ -168,14 +146,9 @@
   <footer>
     <p><small>Copyright &copy;2023 FARMAI- Putting Artificial Intelligence into Farming.</small></p>
   </footer>
-  <!-- <script>
-    document.getElementById("tanklength").addEventListener("input", myFunction);
-    function myFunction() {
-      console.log("Hello")
-    }
-  </script> -->
+
   <script src="{{url_for('static', filename='js/farmtankstorage.js')}}"></script>
   {% endblock %}
-  <!-- <script src="{{url_for('static', filename='js/farmtankstorage.js')}}"></script> -->
+
 
   </html>
