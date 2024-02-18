@@ -129,11 +129,12 @@
             <div class="form-group mb-3">
               {{form.dateanimalshoused.label}}
               {{form.dateanimalshoused(size=32, type="date", class="form-control", min="2023-10-15",
-              max="2023-11-30",
+              max="2023-11-30", oninput="validatedateanimalshoused()",
               id="dateanimalshoused")}}
               {% for error in form.dateanimalshoused.error %}
               <span style="color: red;">[{{error}}]</span>
               {% endfor %}
+              <p id="date-error-message"></p>
             </div>
             <div class=" form-group mb-3">
               <button type="submit" class="btn btn-success btn-lg btn-block enabled">Calculate <i

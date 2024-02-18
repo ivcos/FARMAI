@@ -71,6 +71,26 @@ document.getElementById("tank-height-error-message").innerHTML= "You entered: " 
 }
 
 
+function validatedateanimalshoused() {
+  let dateanimalshoused= document.getElementById("dateanimalshoused").value
+  console.log("ok")
+  console.log(dateanimalshoused)
+  // console.log(typeof dateanimalshoused)
+  //Check dates between the 2023-10-15 and 2023-11-31"
+  // const dateanimalshouseddateformat = new Date(dateanimalshoused)
+  // console.log(typeof dateanimalshouseddateformat)
+  const dateanimalshousedformatted = new Date(dateanimalshoused)
+  console.log(dateanimalshousedformatted)
+  const startdate = new Date("2023-10-15")
+  const enddate = new Date("2023-11-31")
+  if (dateanimalshousedformatted > startdate && dateanimalshousedformatted < enddate ){
+    console.log('✅ date is between the 2 dates');
+  } else {
+    console.log('⛔️ date is not in the range');
+    document.getElementById("date-error-message").innerHTML= "You entered: " + dateanimalshousedformatted + ". Only dates between 2023-10-15 and 2023-11-30 allowed"
+  }
+}
+
 //Clear the form input data and remove the mesaage again
 // document.getElementById("calving_form").reset();
 // message.textContent = "";

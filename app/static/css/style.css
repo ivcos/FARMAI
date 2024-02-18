@@ -242,7 +242,7 @@ border: 5px solid;
 }
 
 #farm-number-error-message, #tank-length-error-message,
-#tank-width-error-message, #tank-height-error-message{
+#tank-width-error-message, #tank-height-error-message, #date-error-message{
   display: hidden;
   color: red;
 }
