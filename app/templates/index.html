@@ -1,74 +1,63 @@
 {% extends "base.html" %}
-{% block title %}Login{% endblock %}
+{% block title %}Home{% endblock %}
 {% block body %}
 
 <!-- <h1>Home Page1234567</h1> -->
 
-<body>
-  <div id="wrapper">
-    <header class="main_header box1">
-      <div class="logo box2">
-        <!-- <img src="images/FarmAILogo1.png" alt="The FarMAI logo" width="127" height="54"> -->
-      </div>
-      <h1>FARMAI - Putting Artificial Intelligence into Farming</h1>
-    </header>
-    <main>
-      <div class="flex-container row">
 
-        <div class="flex-child card text-center border-success mb-2" id="container-farmers-in-control">
+<div id="wrapper">
+  <header class="main_header box1">
+    <div class="logo box2">
+      <!-- <img src="images/FarmAILogo1.png" alt="The FarMAI logo" width="127" height="54"> -->
+    </div>
+    <h1>FARMAI - Putting Artificial Intelligence into Farming</h1>
+  </header>
+  <main>
+    <div class="flex-container row">
+
+      <div class="flex-child card text-center border-success mb-2" id="container-farmers-in-control">
+        <div class="card-header">
+          <h2>Farmers Controlling Their Data</h2>
+        </div>
+        <div class="card-body">
+          <img class="card-img-top img-fluid " src="static/img/generic_farmer_with_phone.jpg" alt=" The FarMAI logo" />
+          <p class="card-text"> Farmers are suffering from <span class="span-data-control"> LACK OF
+              CONTROL</span> of
+            their Farm data.
+            The farmer owns the <em>data</em> about
+            their land, <em>data</em> about their farm practices,
+            <em>data</em> about the way the farmer protects the environment.Our FARMAI phone App gives full control
+            back
+            to the farmer.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slurry Management -->
+      <div class="flex-child card text-center border-success mb-2" id="container-slurry-management">
+        <section id="section-slurry-managemeent">
           <div class="card-header">
-            <h2>Farmers Controlling Their Data</h2>
+            <h2>IoT enabled Tank</h2>
           </div>
           <div class="card-body">
-            <img class="card-img-top img-fluid " src="static/img/generic_farmer_with_phone.jpg"
-              alt=" The FarMAI logo" />
-            <p class="card-text"> Farmers are suffering from <span class="span-data-control"> LACK OF
-                CONTROL</span> of
-              their Farm data.
-              The farmer owns the <em>data</em> about
-              their land, <em>data</em> about their farm practices,
-              <em>data</em> about the way the farmer protects the environment.Our FARMAI phone App gives full control
-              back
-              to the farmer.
+            <!-- <h3 class="card-title">Slurry Management</h3> -->
+            <img class="card-img-top img-fluid " src="static/img/IMG_20231030_124453_red.jpg" alt="The FarMAI logo" />
+            <p class="card-text">
+              With our new IoT sensor installed on your tank, you can now accurately
+              predict when your tank will be full using sensor readings and Artificial Intelligence (AI).
+              You must <a class="btn-index" href="{{url_for('register')}}">Register</a>
+              once you have installed the sensor. If you have already registered,
+              <a class="btn-index" href="{{url_for('login')}}">Login</a>
             </p>
           </div>
-        </div>
-
-        <!-- Slurry Management -->
-        <div class="flex-child card text-center border-success mb-2" id="container-slurry-management">
-          <section id="section-slurry-managemeent">
-            <div class="card-header">
-              <h2>IoT enabled Tank</h2>
-            </div>
-            <div class="card-body">
-              <!-- <h3 class="card-title">Slurry Management</h3> -->
-              <img class="card-img-top img-fluid " src="static/img/IMG_20231030_124453_red.jpg" alt="The FarMAI logo" />
-              <!-- <p class="card-text">
-                With our new IoT sensor installed on your tank, you can now accurately
-                predict when your tank will be full using sensor readings and Artificial Intelligence (AI).
-                You must <a href="{{ url_for('register')}}"><button Class="btn btn-link" id="register-buton"
-                    type="button">Register</button></a> for our service once you
-                have installed the sensor. If you have already registered, <a href="{{ url_for('login')}}"><button
-                    Class="btn btn-link" id="login-buton" type="button">Login</button></a>
-              </p> -->
-              <p class="card-text">
-                With our new IoT sensor installed on your tank, you can now accurately
-                predict when your tank will be full using sensor readings and Artificial Intelligence (AI).
-                You must <a class="btn-index" href="{{ url_for('register')}}">Register</a>
-                once you have installed the sensor. If you have already registered,
-                <a class="btn-index" href="{{ url_for('login')}}">Login</a>
-              </p>
-            </div>
-          </section>
-        </div>
+        </section>
       </div>
+    </div>
+  </main>
+  <footer>
+    <p><small>Copyright &copy;2023 FARMAI- Putting Artificial Intelligence into Farming.</small></p>
+  </footer>
+</div>
+{% endblock %}
 
-
-    </main>
-    <footer>
-      <p><small>Copyright &copy;2023 FARMAI- Putting Artificial Intelligence into Farming.</small></p>
-    </footer>
-  </div>
-  {% endblock %}
-
-  </html>
+</html>
