@@ -255,12 +255,18 @@ td, th, caption {
 
 
 /* CSS Media Queries to NAV for all pages */
-@media (max-width: 375px) {
+@media (max-width: 540px) {
   .forms_container {
     margin-top: 60px;
   }
 }
  
+@media (max-width: 400px) {
+  .forms_container {
+    margin-top: 100px;
+  }
+}
+
 .btn-index {
   /* text-decoration: none; */
   padding: 0.5rem;
