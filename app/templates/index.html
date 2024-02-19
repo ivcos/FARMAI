@@ -43,15 +43,21 @@
             <div class="card-body">
               <!-- <h3 class="card-title">Slurry Management</h3> -->
               <img class="card-img-top img-fluid " src="static/img/IMG_20231030_124453_red.jpg" alt="The FarMAI logo" />
-              <p class="card-text">
+              <!-- <p class="card-text">
                 With our new IoT sensor installed on your tank, you can now accurately
                 predict when your tank will be full using sensor readings and Artificial Intelligence (AI).
                 You must <a href="{{ url_for('register')}}"><button Class="btn btn-link" id="register-buton"
                     type="button">Register</button></a> for our service once you
                 have installed the sensor. If you have already registered, <a href="{{ url_for('login')}}"><button
                     Class="btn btn-link" id="login-buton" type="button">Login</button></a>
+              </p> -->
+              <p class="card-text">
+                With our new IoT sensor installed on your tank, you can now accurately
+                predict when your tank will be full using sensor readings and Artificial Intelligence (AI).
+                You must <a class="btn-index" href="{{ url_for('register')}}">Register</a>
+                once you have installed the sensor. If you have already registered,
+                <a class="btn-index" href="{{ url_for('Login')}}">login</a>
               </p>
-
             </div>
           </section>
         </div>
